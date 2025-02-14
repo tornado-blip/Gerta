@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Owl</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&family=Staatliches&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: black;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    h1 {
+      font-family: 'Staatliches', sans-serif;
+      font-size: 5rem;
+      margin: 0;
+    }
+    
+    .timer {
+      font-size: 2rem;
+      margin-top: 20px;
+      font-family: 'Roboto', sans-serif;
+    }
+    
+    .wait-text {
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+
+    .image-container img {
+      width: 200px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dark Owl</h1>
+  <div class="timer" id="timer">05:00</div>
+  <div class="wait-text">Get ready for the confrontation, there is no turning back from today</div>
+  <div class="image-container">
+    <img src="https://www.darkowl.com/wp-content/uploads/2022/01/OWL-ID-ICON-WH-WEB-LG.png" alt="Dark Owl Image">
+  </div>
+
+  <script>
+    let timeLeft = 300;
+
+    function updateTimer() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      const timerDisplay = document.getElementById("timer");
+      timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+      if (timeLeft > 0) {
+        timeLeft--;
+      } else {
+        clearInterval(timerInterval);
+      }
+    }
+
+    const timerInterval = setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
